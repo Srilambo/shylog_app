@@ -10,8 +10,13 @@ class ProductController extends GetxController {
   final RxString selectedSort = 'Featured'.obs;
   final RxBool isLoading = false.obs;
 
+  static const String _apiBaseUrl = String.fromEnvironment(
+    'API_BASE_URL',
+    defaultValue: 'http://localhost:5000/api/v1',
+  );
+
   final Dio _dio = Dio(BaseOptions(
-    baseUrl: 'http://localhost:5001/api/v1',
+    baseUrl: _apiBaseUrl,
     connectTimeout: const Duration(seconds: 4),
     receiveTimeout: const Duration(seconds: 4),
   ));
